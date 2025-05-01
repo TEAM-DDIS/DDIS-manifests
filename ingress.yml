@@ -16,8 +16,7 @@ spec:
               service:
                 name: ddis-frontend-service
                 port:
-                  number: 8000
-        paths:
+                  number: 80
           - path: /ddis(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
