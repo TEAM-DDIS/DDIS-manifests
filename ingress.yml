@@ -11,8 +11,8 @@ spec:
     - http:
         paths:
           # 프론트 (rewrite해서 assets 경로 유지)
-          - path: /(.*)
-            pathType: ImplementationSpecific
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: ddis-frontend-service
