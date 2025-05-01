@@ -3,13 +3,14 @@ kind: Ingress
 metadata:
   name: argo-ingress
   annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
-  ingressClassName: nginx  
+  ingressClassName: nginx
   rules:
     - http:
         paths:
+          # 프론트 (rewrite해서 assets 경로 유지)
           - path: /(.*)
             pathType: ImplementationSpecific
             backend:
@@ -17,6 +18,8 @@ spec:
                 name: ddis-frontend-service
                 port:
                   number: 80
+
+          # 백엔드 (rewrite /ddis → /)
           - path: /ddis(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
