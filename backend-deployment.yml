@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ddis-backend
-          image: tommy896989/k8s_ddis_boot:35
+          image: tommy896989/k8s_ddis_boot:36
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
